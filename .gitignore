@@ -7,3 +7,15 @@ release
 .env.*
 .DS_Store
 .vite
+
+# visual harness output (devtools/)
+devtools/dist-harness
+devtools/shots
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+dist/
+build/
+.next/

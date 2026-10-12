@@ -111,6 +111,11 @@ renderer.sync(engine, alpha) // engine state -> Three.js scene, with interpolati
 
 ### 2.2 Three.js usage (this is a 2D game wearing 3D clothes)
 
+> **Note (art pass):** the rendering layer has since been rebuilt around this
+> directive — modules, shaders, assets, the defects that were fixed and the
+> headless harness used to verify them are documented in **[RENDERING.md](RENDERING.md)**.
+
+
 - **OrthographicCamera**, fixed, showing the entire 1000×500 battlefield with a small margin. **Cut the "camera follows projectile" feature from v1** — Pocket Tanks shows the whole field, and a static camera removes an entire subsystem (smoothing, bounds, HUD-space vs world-space) for near-zero gameplay loss. Add a subtle zoom-punch on big explosions later if wanted.
 - Terrain mesh: build a `BufferGeometry` triangle strip from the heightmap **once** (1024 columns → ~2046 triangles); on terrain change, **rewrite the position buffer attribute and set `needsUpdate = true`** — never dispose/recreate geometry per explosion. Vertex colors or a 1D gradient texture for the grass/dirt/deep-earth banding.
 - Tanks: simple extruded shapes or low-poly models; turret is a child object rotated by angle — rotation happens in the renderer from engine state, no physics on the turret.

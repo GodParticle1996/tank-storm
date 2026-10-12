@@ -2,7 +2,7 @@
   "name": "tankstorm",
   "version": "1.0.0",
   "private": true,
-  "description": "TankStorm — a modern 2-player turn-based artillery game",
+  "description": "TankStorm \u2014 a modern 2-player turn-based artillery game",
   "main": "dist-electron/main.js",
   "type": "module",
   "scripts": {
@@ -14,7 +14,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "electron:build": "npm run build && electron-builder"
+    "electron:build": "npm run build && electron-builder",
+    "harness": "vite --config devtools/vite.harness.config.ts",
+    "shots": "npm run harness:build && bash devtools/shots.sh",
+    "harness:build": "vite build --config devtools/vite.harness.config.ts"
   },
   "dependencies": {
     "react": "^19.1.0",
